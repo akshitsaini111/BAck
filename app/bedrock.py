@@ -10,6 +10,7 @@ bedrock_client = boto3.client(
     aws_secret_access_key=AWS_SECRET_ACCESS_KEY
 )
 
+# Generate text embeddings using Amazon Bedrock
 async def generate_embedding(text: str):
     payload = json.dumps({"inputText": text})
     response = bedrock_client.invoke_model(
