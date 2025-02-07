@@ -1,11 +1,10 @@
 from fastapi import FastAPI
+from app.routes.embeddings import router as embedding_router
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello from FastAPI Microservice"}
+app.include_router(embedding_router, prefix="/vectors", tags=["Embeddings"])
 
-@app.get("/health")
-def health_check():
-    return {"status": "healthy"}
+@app.get("/")
+def root():
+    return {"message": "Amazon Bedrock Vector API"}
