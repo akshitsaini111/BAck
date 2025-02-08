@@ -30,5 +30,12 @@ async def get_llama_response(prompt: str):
         accept="application/json",
         body=payload
     )
-    result = json.loads(response["body"].read())
-    return result.get("output", "No response")
+    # result = json.loads(response["generation"])
+    # return result
+    body = response.get("body").read().decode("utf-8")
+    response_body = json.loads(body)
+    result = (
+        response_body.get("generation")
+        or response_body.get("outputs")[0]["text"]
+    )
+    return result
