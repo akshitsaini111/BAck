@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.models import PromptInput
-from app.services.llama import generate_response, get_stored_response
+from app.models import PromptInput, RequestModel
+from app.services.llama import generate_response, get_stored_response, getLevel
 
 router = APIRouter()
 
@@ -11,6 +11,10 @@ router = APIRouter()
 @router.post("/generate")
 async def generate_llama_response():
     return await generate_response()
+
+@router.post("/getLevel")
+async def generate_llama_response(request: RequestModel):
+    return await getLevel(request.prompt)
 
 @router.get("/get/{response_id}")
 async def get_response(response_id: str):

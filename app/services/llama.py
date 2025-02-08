@@ -4,7 +4,7 @@ from app.models import LlamaResponse
 from app.bedrock import get_llama_response
 import uuid
 
-from app.promptStore import get_system_prompt, get_user_prompt
+from app.promptStore import get_system_prompt, get_user_prompt,get_system_level
 
 from app.bedrock import get_llama_response
 
@@ -21,6 +21,14 @@ async def generate_response():
  
     return {"response": response_text}
 
+async def getLevel(prompt: str):
+    system_prompt = get_system_level()
+    user_prompt="Give Me The Level Of The Question" + prompt
+    combined_prompt = f"System: {system_prompt}\nUser: {user_prompt}"
+
+    response_text = await get_llama_response(combined_prompt)
+    
+    return {"response": response_text}
 
 
 async def get_stored_response(response_id: str):

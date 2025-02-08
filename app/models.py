@@ -16,3 +16,6 @@ class LlamaResponse(BaseModel):
     id: str
     prompt: str
     response: str
+
+class RequestModel(BaseModel):
+    prompt: str
