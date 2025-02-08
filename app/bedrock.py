@@ -1,6 +1,6 @@
 import boto3
 import json
-from app.config import AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, BEDROCK_MODEL_ID
+from app.config import AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, BEDROCK_MODEL_ID,LLAMA_MODEL_ID
 
 # Initialize Bedrock client
 bedrock_client = boto3.client(
