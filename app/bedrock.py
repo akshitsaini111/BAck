@@ -21,3 +21,14 @@ async def generate_embedding(text: str):
     )
     result = json.loads(response["body"].read())
     return result.get("embedding", [])
+
+async def get_llama_response(prompt: str):
+    payload = json.dumps({"prompt": prompt})
+    response = bedrock_client.invoke_model(
+        modelId=LLAMA_MODEL_ID,
+        contentType="application/json",
+        accept="application/json",
+        body=payload
+    )
+    result = json.loads(response["body"].read())
+    return result.get("output", "No response")
