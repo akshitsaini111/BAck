@@ -18,6 +18,7 @@ async def generate_response():
     combined_prompt = f"System: {system_prompt}\nUser: {user_prompt}"
     
     response_text = await get_llama_response(combined_prompt)
+ 
     
     return {"system_prompt": system_prompt, "user_prompt": user_prompt, "response": response_text}
 
