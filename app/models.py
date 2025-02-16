@@ -19,3 +19,8 @@ class LlamaResponse(BaseModel):
 
 class RequestModel(BaseModel):
     prompt: str
+
+class TopicRequestModel(BaseModel):
+    topic: str
+    subtopic: str
+    level: str

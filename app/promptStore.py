@@ -55,8 +55,7 @@ def get_user_prompt():
 
 
 def get_system_level():
-    """Returns a predefined system prompt."""
-    return """You are an expert in mathematical question classification. Your task is to classify a given math question into one of three difficulty levels: Easy, Medium, or Hard, based on the following criteria:
+    return """You are an expert in mathematical question . Your task is to generate math questions on the basis of three difficulty levels: Easy, Medium, or Hard, based on the following criteria:
 
 1. **Word Count (Question Length)*
    - Easy: 5-10 words  

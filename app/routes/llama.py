@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.models import PromptInput, RequestModel
-from app.services.llama import generate_response, get_stored_response, getLevel
+from app.models import PromptInput, RequestModel, TopicRequestModel
+from app.services.llama import generate_question, generate_response, get_stored_response, getLevel
 
 router = APIRouter()
 
@@ -22,3 +22,7 @@ async def get_response(response_id: str):
     if not response_data:
         raise HTTPException(status_code=404, detail="Response not found")
     return response_data
+
+@router.get("/generateQuestions")
+async def generateQuestion(request:TopicRequestModel):
+     return await generate_question(request.topic, request.subtopic, request.level)
