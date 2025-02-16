@@ -48,15 +48,17 @@ Medium: Solvable in 30-60 seconds
 Hard: Requires more than 1-2 minutes
 """
 
+
 def get_user_prompt():
     """Returns a predefined user prompt."""
     return "Generate 5 Easy Level math questions on Percentage with a word count of 5-10 words each. Include only single-step operations with small whole numbers (1-100)."
+
 
 def get_system_level():
     """Returns a predefined system prompt."""
     return """You are an expert in mathematical question classification. Your task is to classify a given math question into one of three difficulty levels: Easy, Medium, or Hard, based on the following criteria:
 
-1. **Word Count (Question Length)**  
+1. **Word Count (Question Length)*
    - Easy: 5-10 words  
    - Medium: 10-20 words  
    - Hard: 20+ words  
