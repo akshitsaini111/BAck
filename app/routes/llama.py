@@ -23,6 +23,6 @@ async def get_response(response_id: str):
         raise HTTPException(status_code=404, detail="Response not found")
     return response_data
 
-@router.get("/generateQuestions")
+@router.post("/generateQuestions")
 async def generateQuestion(request:TopicRequestModel):
      return await generate_question(request.topic, request.subtopic, request.level)
