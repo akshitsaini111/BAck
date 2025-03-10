@@ -45,7 +45,8 @@ async def generate_question(topic: str, subtopic: str, level: str):
     - "questions" (a list of 5 question strings)
     - "answers" (a list of 5 corresponding answer strings)
     
-    **Strictly follow this JSON format:**  
+    Please present your response in the following JSON format:
+    ```json
     {{
         "questions": [
             "Question 1?",
@@ -62,13 +63,11 @@ async def generate_question(topic: str, subtopic: str, level: str):
             "Answer 5"
         ]
     }}
-    
-    **Only return the JSON object. Do not include any explanations, descriptions, or additional text.**
+    ```
     """
 
     combined_prompt = f"System: {system_prompt}\nUser: {user_prompt}"
     response_text = await get_llama_response(combined_prompt)
-    response_text = response_text.strip().strip("```json").strip("```")
     match = re.search(r"\{.*\}", response_text, re.DOTALL)
     if match:
         response_text = match.group(0)
@@ -82,4 +81,3 @@ async def generate_question(topic: str, subtopic: str, level: str):
         return {"error": "Invalid JSON response from AI.", "raw_response": response_text}
 
     return response_json
-
